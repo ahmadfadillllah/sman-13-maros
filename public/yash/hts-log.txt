@@ -1,0 +1,21 @@
+HTTrack3.49-2+htsswf+htsjava launched on Tue, 25 Jul 2023 12:18:00 at https://yashadmin.dexignzone.com/xhtml/index-4.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://yashadmin.dexignzone.com/xhtml/index-4.html -O1 "C:\My Web Sites\Yash" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+12:18:02	Warning: 	Found for https://yashadmin.dexignzone.com/robots.txt
+12:18:02	Warning: 	File has moved from https://yashadmin.dexignzone.com/robots.txt to https://yashadmin.dexignzone.com/xhtml/page-error-404.html
+12:18:33	Error: 	"Not Found" (404) at link https://yeshadmin.dexignzone.com/xhtml/social-image.png (from https://yashadmin.dexignzone.com/xhtml/index-4.html)
+12:20:47	Warning: 	Found for https://yashadmin.dexignzone.com/xhtml/Trident/
+12:20:47	Warning: 	File has moved from https://yashadmin.dexignzone.com/xhtml/Trident/ to https://yashadmin.dexignzone.com/xhtml/page-error-404.html
+12:20:47	Warning: 	Found for https://yashadmin.dexignzone.com/xhtml/Edge/
+12:20:47	Warning: 	File has moved from https://yashadmin.dexignzone.com/xhtml/Edge/ to https://yashadmin.dexignzone.com/xhtml/page-error-404.html
+12:20:58	Warning: 	Warning: store application/octet-stream without scan: C:/My Web Sites/Yash/yashadmin.dexignzone.com/xhtml/icons/icomoon/fonts/icomoon.svg
+12:20:58	Warning: 	Found for https://yashadmin.dexignzone.com/xhtml/@yaireo/tagify/
+12:20:58	Warning: 	File has moved from https://yashadmin.dexignzone.com/xhtml/@yaireo/tagify/ to https://yashadmin.dexignzone.com/xhtml/page-error-404.html
+
+HTTrack Website Copier/3.49-2 mirror complete in 2 minutes 58 seconds : 442 links scanned, 437 files written (42905316 bytes overall) [36216364 bytes received at 203462 bytes/sec], 8335398 bytes transferred using HTTP compression in 78 files, ratio 17%, 16.5 requests per connection
+(1 errors, 9 warnings, 0 messages)
