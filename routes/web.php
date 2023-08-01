@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\KelasController;
@@ -75,6 +76,12 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,siswa,wali kelas']], fun
 
     // Buat Surat
     Route::get('/e-mail/{id}', [EmailController::class, 'index'])->name('email.index');
+
+    Route::get('/chat/index', [ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chat/user/{user}', [ChatController::class, 'chat'])->name('chat');
+    Route::get('/chat/room/{room}', [ChatController::class, 'room'])->name('chat.room');
+    Route::get('/chat/get/{room}', [ChatController::class, 'getChat'])->name('chat.get');
+    Route::post('/chat/send', [ChatController::class, 'sendChat'])->name('chat.send');
 
     //Profile
     Route::get('/profile/change_password', [ProfileController::class, 'change_password'])->name('profile.change_password');
