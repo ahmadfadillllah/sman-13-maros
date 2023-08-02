@@ -21,13 +21,13 @@ class PelanggaranController extends Controller
         $nomor_surat = NomorSurat::where('status', null)->get();
         if(Auth::user()->role == 'admin'){
             $siswa = Siswa::join('kelas', 'siswa.kelas_id', 'kelas.id')
-            ->select('siswa.*', 'kelas.id as kelas_id')
+            ->select('siswa.*', 'kelas.id as kelas_id')->with('pelanggaran')
             ->get();
         }else{
             $kelas = Kelas::join('walikelas', 'kelas.id', 'walikelas.kelas_id')->where('user_id', Auth::user()->id)->first();
             $siswa = Siswa::join('kelas', 'siswa.kelas_id', 'kelas.id')
             ->select('siswa.*', 'kelas.id as kelas_id')
-            ->where('kelas_id', $kelas->kelas_id)
+            ->where('kelas_id', $kelas->kelas_id)->with('pelanggaran')
             ->get();
         }
         return view('pelanggaran.index', compact('siswa', 'nomor_surat'));
