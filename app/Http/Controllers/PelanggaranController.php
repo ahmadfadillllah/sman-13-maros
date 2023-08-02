@@ -29,6 +29,7 @@ class PelanggaranController extends Controller
             ->select('siswa.*', 'kelas.id as kelas_id')
             ->where('kelas_id', $kelas->kelas_id)->with('pelanggaran')
             ->get();
+
         }
         return view('pelanggaran.index', compact('siswa', 'nomor_surat'));
     }
