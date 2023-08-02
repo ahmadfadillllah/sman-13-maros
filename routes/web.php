@@ -32,6 +32,9 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login/post', [AuthController::class, 'login_post'])->name('login.post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Buat Surat
+Route::get('/e-mail/{id}', [EmailController::class, 'index'])->name('email.index');
+
 Route::group(['middleware' => ['auth', 'checkRole:admin,siswa,wali kelas']], function(){
     //Dashboard
     Route::get('/dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -74,8 +77,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,siswa,wali kelas']], fun
     Route::post('/pelanggaran/index/update/{id}', [PelanggaranController::class, 'update'])->name('pelanggaran.update');
     Route::get('/pelanggaran/index/destroy/{id}', [PelanggaranController::class, 'destroy'])->name('pelanggaran.destroy');
 
-    // Buat Surat
-    Route::get('/e-mail/{id}', [EmailController::class, 'index'])->name('email.index');
+
 
     Route::get('/chat/index', [ChatController::class, 'index'])->name('chat.index');
     Route::get('/chat/user/{user}', [ChatController::class, 'chat'])->name('chat');

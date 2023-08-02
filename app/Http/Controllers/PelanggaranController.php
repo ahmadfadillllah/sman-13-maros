@@ -20,22 +20,14 @@ class PelanggaranController extends Controller
     {
         $nomor_surat = NomorSurat::where('status', null)->get();
         if(Auth::user()->role == 'admin'){
-            // $siswa = Siswa::with('pelanggaran')->get();
             $siswa = Siswa::join('kelas', 'siswa.kelas_id', 'kelas.id')
-            ->join('surat', 'siswa.id', 'surat.siswa_id')
-            ->join('nomorsurat', 'surat.nomorsurat_id', 'nomorsurat.id')
-            ->select('siswa.id as id', 'siswa.nis', 'siswa.nama_siswa',
-            'kelas.id as kelas_id', 'nomorsurat.status as statussurat')
-            ->with('pelanggaran')
+            ->select('siswa.*', 'kelas.id as kelas_id')
             ->get();
         }else{
             $kelas = Kelas::join('walikelas', 'kelas.id', 'walikelas.kelas_id')->where('user_id', Auth::user()->id)->first();
             $siswa = Siswa::join('kelas', 'siswa.kelas_id', 'kelas.id')
-            ->join('surat', 'siswa.id', 'surat.siswa_id')
-            ->join('nomorsurat', 'surat.nomorsurat_id', 'nomorsurat.id')
-            ->select('siswa.id as id', 'siswa.nis', 'siswa.nama_siswa',
-            'kelas.id as kelas_id', 'nomorsurat.status as statussurat')
-            ->where('kelas_id', $kelas->kelas_id)->with('pelanggaran')
+            ->select('siswa.*', 'kelas.id as kelas_id')
+            ->where('kelas_id', $kelas->kelas_id)
             ->get();
         }
         return view('pelanggaran.index', compact('siswa', 'nomor_surat'));

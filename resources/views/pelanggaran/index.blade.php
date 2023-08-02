@@ -77,11 +77,11 @@
                                                         </div>
                                                         <div class="dropdown-menu dropdown-menu-right" style="">
                                                             <a class="dropdown-item" href="{{ route('pelanggaran.show', $s->id) }}">Lihat</a>
-                                                            @if ($s->statussurat)
+                                                            {{-- @if ($s->statussurat)
                                                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#panggilUlang{{ $s->id }}">Panggil Ulang</a>
-                                                            @else
+                                                            @else --}}
                                                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#kirimSurat{{ $s->id }}">Kirim Surat</a>
-                                                            @endif
+                                                            {{-- @endif --}}
                                                         </div>
                                                     </div>
                                                 </td>
