@@ -78,7 +78,7 @@
                                                         <div class="dropdown-menu dropdown-menu-right" style="">
                                                             <a class="dropdown-item" href="{{ route('pelanggaran.show', $s->id) }}">Lihat</a>
 
-                                                            @if ($s->pelanggaran->count('pelanggaran.id') >= 0)
+                                                            @if ($s->pelanggaran->count('pelanggaran.id') > 0)
                                                                 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#kirimSurat{{ $s->id }}">Kirim Surat</a>
                                                             @endif
                                                         </div>
