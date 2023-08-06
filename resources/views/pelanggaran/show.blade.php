@@ -45,8 +45,10 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
+                                                <th>Jenis</th>
                                                 <th>Pelanggaran</th>
                                                 <th>Keterangan</th>
+                                                <th>Tgl Kejadian</th>
                                                 <th>Aksi</th>
 
                                             </tr>
@@ -57,8 +59,10 @@
                                             @include('pelanggaran.modal.destroy')
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $p->jenis }}</td>
                                                 <td>{{ $p->pelanggaran }}</td>
                                                 <td>{{ $p->keterangan }}</td>
+                                                <td>{{date('d-m-Y H:m', strtotime($p->tgl_kejadian)) }}</td>
                                                 <td>
                                                     @if (Auth::user()->role == 'admin' or Auth::user()->role == 'wali kelas')
                                                         <div class="dropdown">

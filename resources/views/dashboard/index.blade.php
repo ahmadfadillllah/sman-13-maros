@@ -138,7 +138,9 @@
                                 <div class="card text-center">
                                     <div class="card-body p-2">
                                         <h4 class="mb-0">{{ $dp->pelanggaran }}</h4>
+                                        <span class="mb-1 d-block">Jenis Pelanggaran : {{ $dp->jenis }}</span>
                                         <span class="mb-1 d-block">{{ $dp->keterangan }}</span>
+                                        <span class="mb-1 d-block">Tgl Kejadian : {{date('d-m-Y H:m', strtotime($dp->tgl_kejadian)) }}</span>
                                     </div>
                                 </div>
                             </div>

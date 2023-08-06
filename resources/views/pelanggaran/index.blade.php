@@ -46,6 +46,7 @@
                                                 <th>NIS</th>
                                                 <th>Nama Siswa</th>
                                                 <th>Jumlah Pelanggaran</th>
+                                                <th>Keterangan</th>
                                                 <th>Aksi</th>
 
                                             </tr>
@@ -66,6 +67,14 @@
                                                     @else
                                                         <span class="badge light badge-danger">{{ $s->pelanggaran->count('pelanggaran.id') }}</span>
                                                     @endif
+                                                </td>
+                                                <td>
+                                                    @if ($s->pelanggaran->count('pelanggaran.jenis' == 'Berat') > 0)
+                                                        <span class="badge light badge-danger">Mempunyai pelanggaran berat</span>
+                                                    @else
+                                                    <span class="badge light badge-primary">Tidak mempunyai pelanggaran berat</span>
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <div class="btn-link" data-bs-toggle="dropdown" aria-expanded="false">

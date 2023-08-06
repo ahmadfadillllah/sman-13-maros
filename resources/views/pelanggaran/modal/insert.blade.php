@@ -10,6 +10,15 @@
             @csrf
                 <div class="modal-body">
                     <div class="mb-3">
+                        <label class="form-label">Jenis</label>
+                        <select class="default-select  form-control wide" name="jenis" required>
+                            <option>Pilih Jenis Pelanggaran</option>
+                            <option value="Ringan">Ringan</option>
+                            <option value="Sedang">Sedang</option>
+                            <option value="Berat">Berat</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="">Pelanggaran</label>
                         <input type="text" class="form-control input-default" name="pelanggaran" required>
                     </div>

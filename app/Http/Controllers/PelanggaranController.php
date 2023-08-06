@@ -45,6 +45,7 @@ class PelanggaranController extends Controller
         try {
             Pelanggaran::create([
                 'siswa_id' => $siswa_id,
+                'jenis' => $request->jenis,
                 'pelanggaran' => $request->pelanggaran,
                 'tgl_kejadian' => $request->tgl_kejadian,
                 'keterangan' => $request->keterangan,
@@ -60,6 +61,7 @@ class PelanggaranController extends Controller
     {
         try {
             $pelanggaran = Pelanggaran::find($id);
+            $pelanggaran->jenis = $request->jenis;
             $pelanggaran->pelanggaran = $request->pelanggaran;
             $pelanggaran->tgl_kejadian = $request->tgl_kejadian;
             $pelanggaran->keterangan = $request->keterangan;
