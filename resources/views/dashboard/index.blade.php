@@ -128,23 +128,39 @@
                         <h4 class="heading mb-0">Detail Pelanggaran</h4>
                     </div>
                     <div class="card-body py-0">
-                        {{-- <div id="redial"></div>
-                        <div class="text-center">
-                            <p>Rekap Pelanggaran</p>
-                        </div> --}}
-                        <div class="row">
-                            @foreach ($detail_pelanggaran as $dp)
-                            <div class="col-xl-12 col-lg-12 col-sm-12 tg-base">
-                                <div class="card text-center">
-                                    <div class="card-body p-2">
-                                        <h4 class="mb-0">{{ $dp->pelanggaran }}</h4>
-                                        <span class="mb-1 d-block">Jenis Pelanggaran : {{ $dp->jenis }}</span>
-                                        <span class="mb-1 d-block">{{ $dp->keterangan }}</span>
-                                        <span class="mb-1 d-block">Tgl Kejadian : {{date('d-m-Y H:m', strtotime($dp->tgl_kejadian)) }}</span>
+                        <div class="tab-content" id="myTabContent-2">
+                            <div class="tab-pane fade show active" id="withoutSpace" role="tabpanel"
+                                aria-labelledby="home-tab-2">
+                                <div class="card-body pt-0">
+                                    <div class="table-responsive">
+                                        <table id="example3" class="display table" style="min-width: 845px">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama Siswa</th>
+                                                    <th>Jenis Pelanggaran</th>
+                                                    <th>Pelanggaran</th>
+                                                    <th>Catatan</th>
+                                                    <th>Tanggal Kejadian</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($detail_pelanggaran as $item)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $item->nama_siswa }}</td>
+                                                    <td>{{ $item->jenis }}</td>
+                                                    <td>{{ $item->pelanggaran }}</td>
+                                                    <td>{{ $item->keterangan }}</td>
+                                                    <td>{{date('d-m-Y H:m', strtotime($item->tgl_kejadian)) }}</td>
+                                                </tr>
+                                                @endforeach
+
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
                         </div>
                     </div>
                 </div>

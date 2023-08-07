@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,siswa,wali kelas']], fun
 
     //Pelanggaran
     Route::get('/pelanggaran/index', [PelanggaranController::class, 'index'])->name('pelanggaran.index');
+    Route::post('/pelanggaran/report', [PelanggaranController::class, 'report'])->name('pelanggaran.report');
     Route::get('/pelanggaran/index/{siswa_id}/show', [PelanggaranController::class, 'show'])->name('pelanggaran.show');
     Route::post('/pelanggaran/index/insert/{siswa_id}', [PelanggaranController::class, 'insert'])->name('pelanggaran.insert');
     Route::post('/pelanggaran/index/send/{siswa_id}', [PelanggaranController::class, 'send'])->name('pelanggaran.send');

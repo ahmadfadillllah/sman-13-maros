@@ -20,11 +20,12 @@ class DashboardController extends Controller
         if(Auth::user()->role == 'siswa'){
             $siswas = Siswa::where('user_id', Auth::user()->id)->first();
             $pelanggaran = Pelanggaran::where('siswa_id',$siswas->id)->count();
-            $detail_pelanggaran = Pelanggaran::where('siswa_id',$siswas->id)->get();
+            $detail_pelanggaran = Pelanggaran::where('siswa_id',$siswas->id)->join('siswa', 'pelanggaran.siswa_id', 'siswa.id')->get();
         }else{
             $pelanggaran = Pelanggaran::count();
-            $detail_pelanggaran = Pelanggaran::all();
+            $detail_pelanggaran = Pelanggaran::join('siswa', 'pelanggaran.siswa_id', 'siswa.id')->get();
         }
+        // dd($detail_pelanggaran);
         return view('dashboard.index', compact('siswa', 'wali_kelas', 'user', 'pelanggaran', 'detail_pelanggaran'));
     }
 }

@@ -34,6 +34,17 @@ class PelanggaranController extends Controller
         return view('pelanggaran.index', compact('siswa', 'nomor_surat'));
     }
 
+    public function report(Request $request)
+    {
+        $siswa = Siswa::join('kelas', 'siswa.kelas_id', 'kelas.id')->join('pelanggaran', 'siswa.id', 'pelanggaran.siswa_id')
+            ->select('siswa.*', 'kelas.id as kelas_id', 'pelanggaran.*')
+            ->where('tgl_kejadian', '>=', $request->awal_tgl)
+            ->where('tgl_kejadian', '<=', $request->akhir_tgl)
+            ->orderBy('siswa.nama_siswa', 'DESC')->get();
+
+        return view('pelanggaran.report', compact('siswa'));
+    }
+
     public function show($id)
     {
         $pelanggaran = Pelanggaran::where('siswa_id', $id)->get();
