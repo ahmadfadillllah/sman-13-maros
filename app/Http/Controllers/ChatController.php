@@ -15,13 +15,26 @@ class ChatController extends Controller
 
     public function index()
     {
-        $user = User::leftJoin('siswa', 'users.id', '=', 'siswa.user_id')
-        ->leftJoin('walikelas', 'users.id', '=', 'walikelas.user_id')
-        ->select('users.id as id','users.username as username', 'users.email as email', 'siswa.nama_siswa as nama_siswa', 'walikelas.nama_wali as nama_wali')
-        ->where('nama_siswa', '!=', null)
-        ->orWhere('nama_wali', '!=', null)
-        ->where('users.id', '!=', Auth::user()->id)
-        ->get();
+        if (Auth::user()->role == 'siswa') {
+            $user = User::leftJoin('siswa', 'users.id', '=', 'siswa.user_id')
+            ->leftJoin('walikelas', 'users.id', '=', 'walikelas.user_id')
+            ->select('users.id as id','users.username as username', 'users.email as email', 'siswa.nama_siswa as nama_siswa', 'walikelas.nama_wali as nama_wali', 'users.role as role')
+            ->where('nama_siswa', '!=', null)
+            ->orWhere('nama_wali', '!=', null)
+            ->where('users.role', '!=', 'siswa')
+            ->where('users.role', 'admin')
+            ->get();
+            // dd($user);
+        }else{
+            $user = User::leftJoin('siswa', 'users.id', '=', 'siswa.user_id')
+            ->leftJoin('walikelas', 'users.id', '=', 'walikelas.user_id')
+            ->select('users.id as id','users.username as username', 'users.email as email', 'siswa.nama_siswa as nama_siswa', 'walikelas.nama_wali as nama_wali')
+            ->where('nama_siswa', '!=', null)
+            ->orWhere('nama_wali', '!=', null)
+            ->where('users.role', '!=', 'wali kelas')
+            ->where('users.role', '!=', 'admin')
+            ->get();
+        }
 
         return view('chat.index', compact('user'));
     }

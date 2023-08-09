@@ -57,6 +57,7 @@
                     <div class="pr-2 ${r.user_id == "{{ Auth::user()->id }}" ? '' : 'pl-1'}">
                         <span class="name" style="color:blue">${r.user_name}</span>
                         <p class="msg">${r.message}</p>
+                        <p class="msg" style="font-size:7px">${r.created_at}</p>
                     </div>
                 </div>`
         })

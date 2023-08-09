@@ -146,6 +146,7 @@
                     <li><a href="{{ route('logout') }}">Logout</a></li>
                 </ul>
             </li>
+            @if (Auth::user()->role != 'wali kelas')
             <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                 <div class="menu-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -162,6 +163,7 @@
                     <li><a href="{{ route('chat.index') }}">Fitur Chat</a></li>
                 </ul>
             </li>
+            @endif
         </ul>
     </div>
 </div>
