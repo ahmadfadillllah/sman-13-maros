@@ -24,7 +24,7 @@
                             <div class="input-group">
                                 <form id="isian">
                                     <div class="input-group mb-3 input-primary">
-                                        <input type="text" class="form-control" name="text" placeholder="Recipient's username">
+                                        <input type="text" class="form-control" name="text" placeholder="Masukkan pesan...">
                                         <button type="submit" class="input-group-text border-0">Kirim</button>
                                     </div>
                                 </form>
