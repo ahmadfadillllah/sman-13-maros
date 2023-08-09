@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Events\ChatEvent;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
@@ -19,8 +20,8 @@ class ChatController extends Controller
         ->select('users.id as id','users.username as username', 'users.email as email', 'siswa.nama_siswa as nama_siswa', 'walikelas.nama_wali as nama_wali')
         ->where('nama_siswa', '!=', null)
         ->orWhere('nama_wali', '!=', null)
+        ->where('users.id', '!=', Auth::user()->id)
         ->get();
-        // dd($user);
 
         return view('chat.index', compact('user'));
     }
@@ -39,7 +40,7 @@ class ChatController extends Controller
         $chats = DB::table('chats')
             ->join('users', 'users.id', '=', 'chats.user_id')
             ->where('chat_room_id', $room)
-            ->select('chats.*', 'users.username as user_name')
+            ->select('chats.*', 'users.username as user_name', 'users.avatar as avatar')
             ->get();
 
         return response()->json($chats);
@@ -75,6 +76,10 @@ class ChatController extends Controller
 
         // Check room
         $room = array_intersect_key($my_room, $target_room);
+
+        DB::table('chats')
+            ->where('user_id', $target_id)
+            ->update(['is_read' => true]);
 
         // If room exists
         if($room) return redirect()->route('chat.room', ['room' => array_keys($room)[0]]);

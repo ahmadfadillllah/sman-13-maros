@@ -12,27 +12,12 @@
                     <div class="card mb-sm-3 mb-md-0 contacts_card dz-chat-user-box">
                         <div class="card-header chat-list-header text-center">
                             <div>
-                                <h6 class="mb-1">Chat with Khelesh</h6>
+                                <h6 class="mb-1">Chats</h6>
                             </div>
                         </div>
                         <div class="card-body msg_card_body dz-scroll" id="DZ_W_Contacts_Body3">
-                            <div class="d-flex justify-content-start mb-4">
-                                <div class="img_cont_msg">
-                                    <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
-                                </div>
-                                <div class="msg_cotainer">
-                                    Hi, how are you samim?
-                                    <span class="msg_time">8:40 AM, Today</span>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-end mb-4">
-                                <div class="msg_cotainer_send">
-                                    Hi Khalid i am good tnx how about you?
-                                    <span class="msg_time_send">8:55 AM, Today</span>
-                                </div>
-                                <div class="img_cont_msg">
-                            <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="">
-                                </div>
+                            <div id="message">
+
                             </div>
                         </div>
                         <div class="card-footer type_msg">
@@ -66,7 +51,11 @@
             chatsHTML += `
                 <div class="d-flex align-items-center
                     ${r.user_id == "{{ Auth::user()->id }}" ? 'text-right justify-content-end' : ''}">
-                    <div class="pr-2 ${r.user_id == "{{ Auth::user()->id }}" ? '' : 'pl-1'}"> <span class="name">${r.user_name}</span>
+                    <div class="header-media">
+                        <img src="{{ asset('yash/yashadmin.dexignzone.com/xhtml/profile') }}/${r.avatar}" style="width:30px;border-radius:30px">
+                    </div>
+                    <div class="pr-2 ${r.user_id == "{{ Auth::user()->id }}" ? '' : 'pl-1'}">
+                        <span class="name" style="color:blue">${r.user_name}</span>
                         <p class="msg">${r.message}</p>
                     </div>
                 </div>`
