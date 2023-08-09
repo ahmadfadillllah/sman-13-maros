@@ -159,9 +159,19 @@
 
                     <span class="nav-text">Chat</span>
                 </a>
+                @if (Auth::user()->role == 'siswa')
+                <ul aria-expanded="false">
+                    <li>
+                        <a href="{{ route('chat', 1) }}">Chat Admin
+                    </a>
+
+                    </li>
+                </ul>
+                @else
                 <ul aria-expanded="false">
                     <li><a href="{{ route('chat.index') }}">Fitur Chat</a></li>
                 </ul>
+                @endif
             </li>
             @endif
         </ul>
